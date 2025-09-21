@@ -91,12 +91,12 @@ namespace TransactionStoreAndRetrievalConsole
                     convertedAmount = amountForRate.ToString();
                 }
 
-                Console.WriteLine($"Record {recordNumber}:");
+                Console.WriteLine($"Record {recordNumber++} -----------:");
                 Console.WriteLine($"ID: {id}");
                 Console.WriteLine($"Date: {date.ToString("MM/dd/yyyy")}");
                 Console.WriteLine($"Description: {description}");
                 Console.WriteLine($"USD Amount: {usdAmount.ToString("0.00")}");
-                if (message == null) 
+                if (rate == null) 
                 { 
                     Console.WriteLine(message);
                 }

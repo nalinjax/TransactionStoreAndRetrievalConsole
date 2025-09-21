@@ -92,7 +92,7 @@ namespace TransactionStoreAndRetrievalConsole
 
             var transactionData = new TransactionData()
             {
-                Amount = amount,
+                Amount = Math.Round(amount,2),
                 Date = transactionDate,
                 Description = description,
                 ID = Guid.NewGuid().ToString()

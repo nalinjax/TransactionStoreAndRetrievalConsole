@@ -15,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionPersistence
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinUnitTests", "..\NalinUnitTests\NalinUnitTests.csproj", "{0263216F-D628-4ED0-8F81-E2BA0E335ED4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98B699F0-B937-4DBD-8CD5-8B001E7DBC51}"
+	ProjectSection(SolutionItems) = preProject
+		..\Data\transactions.txt = ..\Data\transactions.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

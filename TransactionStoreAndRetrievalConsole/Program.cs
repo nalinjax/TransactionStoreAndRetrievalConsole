@@ -20,7 +20,7 @@ namespace TransactionStoreAndRetrievalConsole
             var currencyProvider = new TreasuryCurrencyDataProvider();
             var currencyOperations = new CurrencyOperations(currencyProvider);
 
-            string currentDirectory = Directory.GetCurrentDirectory();
+            string currentDirectory = Directory.GetCurrentDirectory() + "..\\..\\..\\..\\..\\Data";
             var persistenceProvider = new FileDataPersistence(currentDirectory);
             var transactionPersistenceProvider = new TransactionPersistence(persistenceProvider, logger);
 
