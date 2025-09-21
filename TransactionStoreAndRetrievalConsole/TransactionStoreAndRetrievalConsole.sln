@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionCurrencyAPI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionPersistence", "..\NalinTransactionPersistence\NalinTransactionPersistence.csproj", "{3DA6A261-E7C0-4BEC-8E2B-55FE094E3624}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinUnitTests", "..\NalinUnitTests\NalinUnitTests.csproj", "{0263216F-D628-4ED0-8F81-E2BA0E335ED4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3DA6A261-E7C0-4BEC-8E2B-55FE094E3624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DA6A261-E7C0-4BEC-8E2B-55FE094E3624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DA6A261-E7C0-4BEC-8E2B-55FE094E3624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0263216F-D628-4ED0-8F81-E2BA0E335ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0263216F-D628-4ED0-8F81-E2BA0E335ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0263216F-D628-4ED0-8F81-E2BA0E335ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0263216F-D628-4ED0-8F81-E2BA0E335ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
