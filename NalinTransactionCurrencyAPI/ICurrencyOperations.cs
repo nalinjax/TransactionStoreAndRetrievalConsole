@@ -19,6 +19,6 @@ namespace NalinTransactionCurrencyAPI
         /// <summary>
         /// Get conversion rate for specified currency by date.
         /// </summary>
-        public Task<string> GetCurrencyRatesForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths);
+        public Task<string> GetCurrencyRateForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths);
     }
 }

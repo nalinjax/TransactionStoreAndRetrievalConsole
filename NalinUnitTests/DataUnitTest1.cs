@@ -49,7 +49,7 @@ namespace NalinUnitTests
 
             // act
             var transactionDate = DateTime.ParseExact("2025-09-21", "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None);
-            var currencyRate = currencyOperations.GetCurrencyRatesForDate("Canada-Dollar", transactionDate, 6).Result;
+            var currencyRate = currencyOperations.GetCurrencyRateForDate("Canada-Dollar", transactionDate, 6).Result;
 
             // Assert
             Assert.AreEqual("0.97", currencyRate);
@@ -64,7 +64,7 @@ namespace NalinUnitTests
 
             // act
             var transactionDate = DateTime.ParseExact("2001-09-21", "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None);
-            var currencyRate = currencyOperations.GetCurrencyRatesForDate("Canada-Dollar", transactionDate, 6).Result;
+            var currencyRate = currencyOperations.GetCurrencyRateForDate("Canada-Dollar", transactionDate, 6).Result;
 
             // Assert
             Assert.IsNull(currencyRate);

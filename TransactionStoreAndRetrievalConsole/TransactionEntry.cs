@@ -15,8 +15,11 @@ namespace TransactionStoreAndRetrievalConsole
     {
         INalinLogger _logger;
 
-        public TransactionEntry(INalinLogger logger)
+        ITransactionPersistence _transactionPersistence;
+
+        public TransactionEntry(ITransactionPersistence transactionPersistence, INalinLogger logger)
         {
+            _transactionPersistence = transactionPersistence;
             _logger = logger;
         }
 
@@ -24,7 +27,7 @@ namespace TransactionStoreAndRetrievalConsole
         {
             Console.WriteLine("****Transaction entry");
 
-            Console.WriteLine("Entry description (max 50 chars):");
+            Console.WriteLine("Enter description (max 50 chars):");
             var description = Console.ReadLine();
 
             if (string.IsNullOrEmpty(description))
@@ -39,7 +42,7 @@ namespace TransactionStoreAndRetrievalConsole
                 return;
             }
 
-            Console.WriteLine("Entry date (mm/dd/yyyy):");
+            Console.WriteLine("Enter date (mm/dd/yyyy):");
             var dateInput = Console.ReadLine();
 
             if (string.IsNullOrEmpty(dateInput))
@@ -54,7 +57,7 @@ namespace TransactionStoreAndRetrievalConsole
                 return;
             }
 
-            Console.WriteLine("Entry amount (> 0):");
+            Console.WriteLine("Enter amount (> 0):");
             var amountInput = Console.ReadLine();
 
             // validate
@@ -87,11 +90,6 @@ namespace TransactionStoreAndRetrievalConsole
         {
             Console.WriteLine("Adding transaction");
 
-            string currentDirectory = Directory.GetCurrentDirectory();
-
-            var persistenceProvider = new FileDataPersistence(currentDirectory);
-            var transactionPersistenceProvider = new TransactionPersistence(persistenceProvider, _logger);
-
             var transactionData = new TransactionData()
             {
                 Amount = amount,
@@ -100,7 +98,7 @@ namespace TransactionStoreAndRetrievalConsole
                 ID = Guid.NewGuid().ToString()
             };
 
-            var isSuccessful = transactionPersistenceProvider.PersistSingle(transactionData);
+            var isSuccessful = _transactionPersistence.PersistSingle(transactionData);
             if (isSuccessful)
             {
                 Console.WriteLine("Adding transaction completed successfully.");

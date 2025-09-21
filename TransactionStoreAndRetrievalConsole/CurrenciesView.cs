@@ -11,10 +11,13 @@ namespace TransactionStoreAndRetrievalConsole
     /// </summary>
     internal class CurrenciesView
     {
+        ICurrencyOperations _currencyOperations;
+
         INalinLogger _logger;
 
-        public CurrenciesView(INalinLogger logger)
+        public CurrenciesView(ICurrencyOperations currencyOperations, INalinLogger logger)
         {
+            _currencyOperations = currencyOperations;
             _logger = logger;
         }
 
@@ -22,10 +25,7 @@ namespace TransactionStoreAndRetrievalConsole
         {
             Console.WriteLine("****Currencies view");
 
-            var provider = new TreasuryCurrencyDataProvider();
-            var currencyOperations = new CurrencyOperations(provider);
-
-            var countryCurrencies = currencyOperations.GetAllSupportedCurrencies().Result;
+            var countryCurrencies = _currencyOperations.GetAllSupportedCurrencies().Result;
 
             if (countryCurrencies == null)
             {

@@ -2,6 +2,8 @@
 // Sep/21/2025 - Jacksonville FL
 
 using NalinLogging;
+using NalinTransactionCurrencyAPI;
+using NalinTransactionPersistence;
 
 namespace TransactionStoreAndRetrievalConsole
 {
@@ -11,12 +13,22 @@ namespace TransactionStoreAndRetrievalConsole
         {
             Console.WriteLine("From Nalin - TransactionStoreAndRetrievalConsole - started");
 
+            // setup
+
             var logger = new NalinLogger();
+
+            var currencyProvider = new TreasuryCurrencyDataProvider();
+            var currencyOperations = new CurrencyOperations(currencyProvider);
+
+            string currentDirectory = Directory.GetCurrentDirectory();
+            var persistenceProvider = new FileDataPersistence(currentDirectory);
+            var transactionPersistenceProvider = new TransactionPersistence(persistenceProvider, logger);
+
 
             var running = true;
             while (running)
             {
-                Console.WriteLine("Enter 1 for transaction-input, 2 for transactions-view, 3 for currencies, Q to exit: Then hit ENTER.");
+                Console.WriteLine("Enter 1 for transaction-input, 2 for transactions-view, 3 to view all currencies, Q to exit: Then hit ENTER.");
                 var selection = Console.ReadLine();
                 switch (selection)
                 {
@@ -24,15 +36,15 @@ namespace TransactionStoreAndRetrievalConsole
                         running = false;
                         break;
                     case "1":
-                        var entry = new TransactionEntry(logger);
+                        var entry = new TransactionEntry(transactionPersistenceProvider, logger);
                         entry.Run();
                         break;
                     case "2":
-                        var view = new TransactionView(logger);
+                        var view = new TransactionsView(currencyOperations, transactionPersistenceProvider, logger);
                         view.Run();
                         break;
                     case "3":
-                        var currencies = new CurrenciesView(logger);
+                        var currencies = new CurrenciesView(currencyOperations, logger);
                         currencies.Run();
                         break;
                 }

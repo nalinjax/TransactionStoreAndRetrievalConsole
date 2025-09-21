@@ -52,7 +52,7 @@ namespace NalinTransactionCurrencyAPI
         /// Get conversion rate for specified currency by date.
         /// With caching
         /// </summary>
-        public async Task<string> GetCurrencyRatesForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths)
+        public async Task<string> GetCurrencyRateForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths)
         {
             var transactionDateFormatted = transactionDate.ToString("yyyy-MM-dd");
             var cacheKey = $"{countryCurrency}#{transactionDateFormatted}";
