@@ -1,6 +1,8 @@
 ﻿// Author: Nalin Jayasuriya
 // Sep/21/2025 - Jacksonville FL
 
+using NalinLogging;
+
 namespace TransactionStoreAndRetrievalConsole
 {
     internal class Program
@@ -9,26 +11,28 @@ namespace TransactionStoreAndRetrievalConsole
         {
             Console.WriteLine("From Nalin - TransactionStoreAndRetrievalConsole - started");
 
+            var logger = new NalinLogger();
+
             var running = true;
             while (running)
             {
-                Console.WriteLine("Enter 1 for transaction-input, 2 for transactions-view, 3 for currencies, Q to exit");
-                var selection = Console.ReadKey();
-                switch (selection.Key.ToString())
+                Console.WriteLine("Enter 1 for transaction-input, 2 for transactions-view, 3 for currencies, Q to exit: Then hit ENTER.");
+                var selection = Console.ReadLine();
+                switch (selection)
                 {
                     case "Q":
                         running = false;
                         break;
                     case "1":
-                        var entry = new TransactionEntry();
+                        var entry = new TransactionEntry(logger);
                         entry.Run();
                         break;
                     case "2":
-                        var view = new TransactionView();
+                        var view = new TransactionView(logger);
                         view.Run();
                         break;
-                    case "D3":
-                        var currencies = new CurrenciesView();
+                    case "3":
+                        var currencies = new CurrenciesView(logger);
                         currencies.Run();
                         break;
                 }

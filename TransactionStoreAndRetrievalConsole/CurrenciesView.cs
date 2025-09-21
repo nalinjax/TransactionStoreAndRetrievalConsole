@@ -1,6 +1,7 @@
 ﻿// Author: Nalin Jayasuriya
 // Sep/21/2025 - Jacksonville FL
 
+using NalinLogging;
 using NalinTransactionCurrencyAPI;
 
 namespace TransactionStoreAndRetrievalConsole
@@ -10,8 +11,17 @@ namespace TransactionStoreAndRetrievalConsole
     /// </summary>
     internal class CurrenciesView
     {
+        INalinLogger _logger;
+
+        public CurrenciesView(INalinLogger logger)
+        {
+            _logger = logger;
+        }
+
         internal void Run()
         {
+            Console.WriteLine("****Currencies view");
+
             var provider = new TreasuryCurrencyDataProvider();
             var currencyOperations = new CurrencyOperations(provider);
 
